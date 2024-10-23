@@ -9,6 +9,15 @@ const TrafficLight = () => {
         setSelected(id);
     }
 
+    const alternarLuz = () => {
+        if (selected === 'red') {
+            return setSelected('yellow')
+        } else if (selected === 'yellow') {
+            return setSelected('green')
+        } else {
+            return setSelected('red')
+        }
+    }
 
     return (
         <>
@@ -17,7 +26,7 @@ const TrafficLight = () => {
                 style={{ width: "20px", height: "150px" }}>
             </div>
 
-            <div className="container d-flex flex-column align-items-center bg-dark p-3 " style={{ width: "150px" }}>
+            <div className="container d-flex flex-column align-items-center bg-dark p-3 rounded" style={{ width: "150px" }}>
                 <div
                     className={`bg-danger rounded-circle ${selected === 'red' ? 'glow' : ''}`}
                     style={{ width: "100px", height: "100px" }}
@@ -33,6 +42,11 @@ const TrafficLight = () => {
                     style={{ width: "100px", height: "100px" }}
                     onClick={() => prenderLuz('green')}>
                 </div>
+            </div>
+
+
+            <div className="container d-flex flex-column align-items-center p-3">
+                <button onClick={alternarLuz} type="button" className="btn btn-outline-light btn-lg border">Alternar Color</button>
             </div>
         </>
     );
